@@ -2,7 +2,12 @@ import TAssignment from "../../types/assignment";
 import { Assignment } from "../Assignment";
 import styles from "./assignments.module.css";
 
-export function Assignments({assignments}: {assignments?: Array<TAssignment>}) {
+type assignmentsProps = {
+  assignments: Array<TAssignment>;
+  onDelete: (id: string) => void;
+}
+
+export function Assignments({assignments, onDelete}: assignmentsProps) {
   function getNoOfCompletedAssignments() {
     return assignments ? assignments.filter(assignment => assignment.completed).length : 0;
   }
@@ -24,7 +29,7 @@ export function Assignments({assignments}: {assignments?: Array<TAssignment>}) {
       {assignments && assignments.length > 0
           ? assignments.map((assignment) => (
             <div key={assignment.id} className={styles.list}>
-              <Assignment title={assignment.title}/>
+              <Assignment onDelete={onDelete} {...assignment}/>
             </div>
           ))
           : (<div className={styles.noAssignments}>
