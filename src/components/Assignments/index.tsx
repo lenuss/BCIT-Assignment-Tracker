@@ -6,9 +6,10 @@ type assignmentsProps = {
   assignments: Array<TAssignment>;
   onDelete: (id: string) => void;
   onCheck: (id: string) => void;
+  onDateSelect: (date: Date | null, id: string) => void;
 }
 
-export function Assignments({assignments, onDelete, onCheck}: assignmentsProps) {
+export function Assignments({assignments, onDelete, onCheck, onDateSelect}: assignmentsProps) {
   function getNoOfCompletedAssignments() {
     return assignments ? assignments.filter(assignment => assignment.completed).length : 0;
   }
@@ -33,6 +34,7 @@ export function Assignments({assignments, onDelete, onCheck}: assignmentsProps) 
               <Assignment
                 onDelete={onDelete}
                 onCheck={onCheck}
+                onDateSelect={onDateSelect}
                 {...assignment}
               />
             </div>

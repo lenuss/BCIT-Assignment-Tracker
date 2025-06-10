@@ -12,7 +12,8 @@ function App() {
       {
         id: crypto.randomUUID(),
         title: title,
-        completed: false
+        completed: false,
+        dueDate: null
       }
     ])
   }
@@ -30,6 +31,15 @@ function App() {
     }))
   }
 
+  function handleDateSelect(date: Date | null, id: string) {
+    setAssignments(assignments.map((assignment) => {
+      if (assignment.id === id) {
+        return { ...assignment, dueDate: date }
+      }
+      return assignment
+    }))
+  }
+
   return (
     <>
       <Header
@@ -39,6 +49,7 @@ function App() {
         assignments={assignments}
         onDelete={handleDeleteAssignment}
         onCheck={handleCheckAssignment}
+        onDateSelect={handleDateSelect}
       />
     </>
   );

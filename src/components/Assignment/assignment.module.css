@@ -5,17 +5,29 @@
   padding: 16px;
   border-radius: 8px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  flex-direction: column;
   margin-bottom: 8px;
 }
 
-.assignment p {
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  
+}
+
+.topRow p {
   font-size: 14px;
   line-height: 19px;
   color: #f2f2f2;
   margin-right: auto;
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: right;
+  gap: 12px;
 }
 
 .completed p {
@@ -52,4 +64,30 @@ p.textCompleted {
   background: none;
   border: none;
   color: #808080;
+}
+
+.dueDateTag {
+  background-color: gray;
+  border-radius: 15px;
+  padding: 2px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.tagRed {
+  background-color: rgb(158, 15, 15);
+}
+
+.datePickerContainer {
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.datePickerContainer.active {
+  max-height: 300px; /* adjust if needed */
+  opacity: 1;
+  transform: translateY(0);
 }
