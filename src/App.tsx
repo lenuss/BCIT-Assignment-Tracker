@@ -21,12 +21,25 @@ function App() {
     setAssignments(assignments.filter(assignment => assignment.id !== id))
   }
 
+  function handleCheckAssignment(id: string) {
+    setAssignments(assignments.map((assignment) => {
+      if (assignment.id === id) {
+        return { ...assignment, completed: !assignment.completed }
+      }
+      return assignment
+    }))
+  }
+
   return (
     <>
       <Header
         onAddAssignment={handleAddAssignment}
       />
-      <Assignments assignments={assignments} onDelete={handleDeleteAssignment}/>
+      <Assignments
+        assignments={assignments}
+        onDelete={handleDeleteAssignment}
+        onCheck={handleCheckAssignment}
+      />
     </>
   );
 }

@@ -18,6 +18,11 @@
   margin-right: auto;
 }
 
+.completed p {
+  text-decoration: line-through;
+  color: #808080;
+}
+
 p.textCompleted {
   color: #808080;
   text-decoration: line-through;

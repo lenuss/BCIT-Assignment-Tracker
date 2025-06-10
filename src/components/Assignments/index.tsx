@@ -5,9 +5,10 @@ import styles from "./assignments.module.css";
 type assignmentsProps = {
   assignments: Array<TAssignment>;
   onDelete: (id: string) => void;
+  onCheck: (id: string) => void;
 }
 
-export function Assignments({assignments, onDelete}: assignmentsProps) {
+export function Assignments({assignments, onDelete, onCheck}: assignmentsProps) {
   function getNoOfCompletedAssignments() {
     return assignments ? assignments.filter(assignment => assignment.completed).length : 0;
   }
@@ -29,7 +30,11 @@ export function Assignments({assignments, onDelete}: assignmentsProps) {
       {assignments && assignments.length > 0
           ? assignments.map((assignment) => (
             <div key={assignment.id} className={styles.list}>
-              <Assignment onDelete={onDelete} {...assignment}/>
+              <Assignment
+                onDelete={onDelete}
+                onCheck={onCheck}
+                {...assignment}
+              />
             </div>
           ))
           : (<div className={styles.noAssignments}>
