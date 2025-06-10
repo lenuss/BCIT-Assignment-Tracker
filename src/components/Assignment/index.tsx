@@ -1,14 +1,19 @@
 import styles from "./assignment.module.css";
 import { TbTrash } from "react-icons/tb";
 
-export function Assignment() {
+type AssignmentProps = {
+  title: string;
+}
+
+export function Assignment({ title }: AssignmentProps) {
+
   return (
     <div className={styles.assignment}>
       <button className={styles.checkContainer}>
         <div />
       </button>
 
-      <p>Some Title</p>
+      <p>{title}</p>
 
       <button className={styles.deleteButton}>
         <TbTrash size={20} />

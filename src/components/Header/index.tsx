@@ -3,11 +3,17 @@ import { AiOutlinePlusCircle } from "react-icons/ai";
 import { uppercase } from "../../helpers/stringHelpers";
 import { useState } from "react";
 
-export function Header() {
+type Props = {
+  onAddAssignment: (title: string) => void;
+}
+
+export function Header(props: Props) {
   const [newAssignment, setNewAssignment] = useState("");
 
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
+    props.onAddAssignment(newAssignment);
+    setNewAssignment("");
   }
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
